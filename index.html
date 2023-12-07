@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" type="image/png" href="static/blog/icons/logo.png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" type="text/css" href="static/blog/owlcarousel/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/blog/owlcarousel/owl.theme.default.min.css" />
+
+  <!-- Jarallax CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.min.css" rel="stylesheet">
+
+
+  <!-- videojs -->
+  <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+
+
+  <!-- Material Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+  <link rel="stylesheet" type="text/css" href="static/blog/footer.css" />
+  <link rel="stylesheet" type="text/css" href="static/blog/hero.css" />
+  <link rel="stylesheet" type="text/css" href="static/blog/animate.css" />
+  <link rel="stylesheet" type="text/css" href="static/blog/main.css" />
+  <link rel="stylesheet" type="text/css" href="static/blog/comments.css" />
+
+  <!-- owl carousel CSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <title>dejaView</title>
+</head>
+
+<body class="d-flex flex-column min-vh-90">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4 logo" href="#">&gt;&lt; DEJAVIEW</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link live" href="#">Home</a>
+            <a class="nav-item nav-link" href="#">About</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            <form method="POST" action="#">
+              <div class="form-inline my-lg-0 input-group search-input pl-sm-0">
+              <input type="search" class="form-control " placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" id="search-bar" name="q"/>
+              <button class="btn btn-outline-success input-group-text border-0" id="search-button" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+            </div>
+          </form>
+            <a class="nav-item nav-link" href="#">Login</a>
+            <a class="nav-item nav-link" href="#">Register</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="row">
+
+  </header>
+
+  <main role="main" class="container">
+    <div class="col-md-12">
+ <section class="welcome-area">
+    <div class="welcome-slides owl-carousel">
+
+      <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url(/static/blog/icons/banner.jpg);">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+
+            <div class="col-12">
+              <div class="welcome-text text-right">
+                <h2 data-animation="fadeInUp" data-delay="300ms">Welcome to <br>DejaView</h2>
+                <h6 data-animation="fadeInUp" data-delay="700ms">Experience the thrill of live events from the comfort of your home.</h6>
+                <div class="hero-btn-group" data-animation="fadeInUp" data-delay="800ms">
+                  <a href="#home" class="btn more-btn">Discover <i class="zmdi zmdi-long-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+<section class="our-speaker-area section-padding-100-60">
+    <div class="container">
+        <div class="row h-100">
+
+            <div class="col-12">
+                <div class="section-heading-3 text-center wow fadeInUp my-4 py-4" data-wow-delay="300ms">
+                    <h4>Exclusive Content from All your Favorite Artists in One Place</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12 col-sm-6 col-lg-4" style="width: 18rem;">
+                <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+
+                    <div class="speaker-single-thumb">
+                        <img class="thumbnail" src="/static/blog/assets/charger2.jpg" alt>
+                    </div>
+
+                    <div class="speaker-info">
+                        <h5>Charger Boy</h5>
+                        <p>Singer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4" style="width: 18rem;">
+                <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+
+                    <div class="speaker-single-thumb">
+                        <img class="thumbnail" src="/static/blog/assets/concert.jpg" alt>
+                    </div>
+
+
+                    <div class="speaker-info">
+                        <h5>Wande Electric</h5>
+                        <p>Singer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4" style="width: 18rem;">
+                <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+
+                    <div class="speaker-single-thumb">
+                        <img class="thumbnail" src="/static/blog/assets/adele.jpg" alt>
+                    </div>
+
+
+                    <div class="speaker-info">
+                        <h5>Emma Sande</h5>
+                        <p>Artist</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-12 col-sm-6 col-lg-4" style="width: 18rem;">
+                <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+
+                    <div class="speaker-single-thumb">
+                        <img class="thumbnail" src="/static/blog/assets/flavor2.jpg" alt="thumbnail">
+                    </div>
+
+
+                    <div class="speaker-info">
+                        <h5>Flavor Noah</h5>
+                        <p>Director</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4" style="width: 18rem;">
+                <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+
+                    <div class="speaker-single-thumb card">
+                        <img class="card" src="/static/blog/assets/flavor.jpg" alt>
+                    </div>
+
+                    <div class="speaker-info">
+                        <h5>Khali Kennar</h5>
+                        <p>Producer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4" style="width: 18rem;">
+                <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+
+                    <div class="speaker-single-thumb" >
+                        <img class="thumbnail" src="/static/blog/assets/ayo.jpg" alt>
+                    </div>
+
+                    <div class="speaker-info">
+                        <h5>Yemi Cat</h5>
+                        <p>Comedian</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="more-speaker-btn text-center mt-20 mb-40 wow fadeInUp" data-wow-delay="300ms">
+                    <a class="btn confer-btn more-btn mb-4" href="#">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="welcome-slides owl-carousel">
+
+    <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url(/static/blog/assets/private.jpg);">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+
+          <div class="col-12">
+            <div class="welcome-text text-right">
+              <h2 data-animation="fadeInUp" data-delay="300ms">Why Choose Us?</h2>
+              <h6 data-animation="fadeInUp" data-delay="700ms">Exclusive Content</h6>
+              <h6 data-animation="fadeInUp" data-delay="700ms">Easy Access Anywhere</h6>
+              <h6 data-animation="fadeInUp" data-delay="700ms">User-Friendly Interface</h6>
+
+              <div class="hero-btn-group" data-animation="fadeInUp" data-delay="800ms">
+                <a href="#home" class="btn more-btn">Sign Up For Free <i class="zmdi zmdi-long-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<section class="about-us-countdown-area section-padding-100-0" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-12 col-md-6">
+                <div class="about-content-text mb-80">
+                    <h6 class="wow fadeInUp my-4" data-wow-delay="300ms"><section></section></h6>
+                    <h3 class="wow fadeInUp" data-wow-delay="300ms">Magic of HLS Streaming</h3>
+                    <p class="wow fadeInUp" data-wow-delay="300ms">Unlock the potential of uninterrupted and secure streaming through our advanced infrastructure hosted globally on AWS. Our Adaptive technology dynamically optimizes video quality, guaranteeing crystal-clear playback on any device. Bringing you world class entertainment, free from the disruptions of buffering. Rest easy knowing your experience is fortified by state of the art encryption for an added layer of security.</p>
+                    <a href="#" class="btn more-btn mt-50 wow fadeInUp my-4" data-wow-delay="300ms">Discover <i
+                            class="zmdi zmdi-long-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="jarallax-keep-img demo-float-right" data-speed="0.8">
+                    <img class="jarallax-img" src="/static/blog/icons/hls.jpg" alt="" width="400" loading="lazy" />
+                  </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="countdown-up-area my-4">
+        <div class="container my-4">
+            <h4 class="mb-4 text-center" style="color: #df42b1;">Past, Present, and Future Converge Seamlessly at DEJAVIEW</h4>
+            <div class="row align-items-center">
+
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="single-we-offer-content text-center wow fadeInUp" data-wow-delay="0.6s">
+
+                    <div class="offer-icon">
+                    <img src="img/core-img/icon.png" alt="">
+                    </div>
+                    <h5>Relive the Magic</h5>
+                    <h5>Dive into the past and rediscover the magical shows that captivated audiences through
+                        our extensive library to relive those moments.</h5>
+                    </div>
+                    </div>
+
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="single-we-offer-content text-center wow fadeInUp" data-wow-delay="0.3s">
+
+                    <div class="offer-icon">
+                        <i class="zmdi zmdi-ticket-star"></i>
+                    <img src="img/core-img/icon.png" alt="">
+                    </div>
+                    <h5>Elevate Your Experience</h5>
+                    <h5>Browse through our carefully curated merchandise collection, to bring a piece of your favorite
+                        events directly to your daily life..</h5>
+                    </div>
+                    </div>
+
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="single-we-offer-content text-center wow fadeInUp" data-wow-delay="0.6s">
+
+                    <div class="offer-icon">
+                    <img src="img/core-img/icon.png" alt="">
+                    </div>
+                    <h5>Secure Your Front-Row Seat</h5>
+                    <h5>Be the first to experience the next wave of entertainment, by purchasing tickets to upcoming shows
+                        ensuring that you never miss a beat.</h5>
+                    </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="our-client-area about-page section-padding-0-100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="section-heading-3 text-center wow fadeInUp" data-wow-delay="300ms">
+                    <p>WHAT CLIENTS SAY</p>
+                    <h4 class="mb-2" style="color: #df42b1;">Testimonials</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class=" client-area owl-carousel">
+                    <div class="single-client-content bg-boxshadow wow fadeInUp" data-wow-delay="300ms">
+                        <div class="single-client-text about-page">
+                            <p>I'm constantly blown away by the variety of events available on this platform.
+                                From concerts to exclusive shows, the quality of streaming is unmatched regardless
+                                whether I'm watching on my laptop or phone
+                                kudos</p>
+                            <div class="single-client-thumb-info d-flex align-items-center">
+
+                                <div class="single-client-thumb">
+                                    <img src="img/bg-img/15.jpg" alt>
+                                </div>
+
+                                <div class="client-info">
+                                    <h6>Jar Jar Binks</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="client-icon">
+                            <i class="zmdi zmdi-quote"></i>
+                        </div>
+                    </div>
+                    <div class="single-client-content bg-boxshadow wow fadeInUp" data-wow-delay="300ms">
+                        <div class="single-client-text about-page">
+                            <p>As a busy professional, I love the flexibility this platform offers. I can catch up on my
+                                favorite events whenever I have the time, and the crystal-clear playback quality makes every
+                                experience enjoyable. It's like having a personalized entertainment venue at my fingertips.</p>
+
+                            <div class="single-client-thumb-info d-flex align-items-center">
+
+                                <div class="single-client-thumb">
+                                    <img src="img/bg-img/15.jpg" alt>
+                                </div>
+
+                                <div class="client-info">
+                                    <h6>Sarah Connor</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="client-icon">
+                            <i class="zmdi zmdi-quote"></i>
+                        </div>
+                    </div>
+                    <div class="single-client-content bg-boxshadow wow fadeInUp" data-wow-delay="300ms">
+                        <div class="single-client-text about-page">
+                            <p>Partnering with Dejaview has revolutionized how we connect with our audience. The client pages make it easy to upload and manage content. Our events have reached a broader audience, and the feedback from viewers has been overwhelmingly positive.</p>
+
+                            <div class="single-client-thumb-info d-flex align-items-center">
+
+                                <div class="single-client-thumb">
+                                    <img src="img/bg-img/15.jpg" alt>
+                                </div>
+
+                                <div class="client-info">
+                                    <h6>Mali Moja Events</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="client-icon">
+                            <i class="zmdi zmdi-quote"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </main>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="blog/scripts/owl/more.js"></script>
+  <script src="blog/scripts/owl/slides.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
+
+   <!-- videoJS CSS -->
+   <script defer src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+
+   <!-- load animations -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get all elements with data-animation attribute
+      var elements = document.querySelectorAll('[data-animation]');
+
+      // Iterate through each element
+      elements.forEach(function (element) {
+        // Get animation and delay values from data attributes
+        var animation = element.dataset.animation;
+        var delay = element.dataset.delay;
+
+        // Add classes for the specified animation and delay
+        element.classList.add('animated', animation);
+        element.style.animationDelay = delay;
+      });
+    });
+  </script>
+      <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
+  <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0 mt-auto">
+
+    <div class="main-footer-area">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-sm-8 col-lg-4 text-center">
+                    <div class="single-footer-widget mb-60">
+                        <h5 class="widget-title">
+                        <a href="#" class="footer-logo logo "><img src="icons/logo.png" alt="&gt;&lt; DEJAVIEW"></a>
+                    </h5>
+                        <p>Empowering Moments, Connecting Time: Your Gateway to Unforgettable Experiences </p>
+
+                        <div class="social-info">
+                            <a href="#"><i class="zmdi zmdi-instagram"></i></a>
+                            <a href="#"><i class="zmdi zmdi-twitter"></i></a>
+                            <a href="#"><i class="zmdi zmdi-linkedin"></i></a>
+                            <a href="#"><i class="zmdi zmdi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 text-center">
+                    <div class="single-footer-widget mb-60">
+
+                        <h5 class="widget-title">Contact</h5>
+
+                        <div class="footer-contact-info">
+                            <p><i class="zmdi zmdi-phone"></i> (254) 720 089691</p>
+                            <p><i class="zmdi zmdi-email"></i> contact@dejaview.com</p>
+                            <p><i class="zmdi zmdi-globe"></i> www.dejaview.live</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8 col-lg-4 justify-content-center">
+                    <div class="single-footer-widget mb-60">
+                        <h5 class="widget-title text-center">Sitemap</h5>
+                        <div class="footer-nav">
+                            <p class="text-center"><a href="#"><i class="zmdi zmdi-home"></i> Home</a></p>
+                            <p class="text-center"><a href="#"><i class="zmdi zmdi-pages"></i> About</a></p>
+                            <p class="text-center"><a href="#"><i class="zmdi zmdi-account"></i> Login</a></p>
+                            <p class="text-center"><a href="#"><i class="zmdi zmdi-accounts-add"></i> Register</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copywrite-content">
+            <div class="row">
+
+                <div class="col-12 col-md-8">
+
+                    <div class="copywrite-text">
+                        <p class="text-center">
+                            Copyright ©2023 All rights reserved | This website is made with 💜 by <a
+                                href="https://github.com/viictoo" target="_blank">viictoo</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="footer-menu">
+                        <ul class="nav justify-content-end">
+                            <li><a href="#"><i class="zmdi zmdi-dot"></i> Terms of Service</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-dot"></i> Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
