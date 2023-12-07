@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" type="image/png" href="{% static 'blog/icons/logo.png' %}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/owlcarousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/owlcarousel/owl.theme.default.min.css' %}" />
+
+  <!-- Jarallax CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.min.css" rel="stylesheet">
+
+
+  <!-- videojs -->
+  <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+
+
+  <!-- Material Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/footer.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/hero.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/animate.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/comments.css' %}" />
+
+  <!-- owl carousel CSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  {% if title %}
+  <title>dejaView - {{ title }}</title>
+  {% else %}
+  <title>dejaView</title>
+  {% endif %}
+</head>
+
+<body class="d-flex flex-column min-vh-90">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4 logo" href="{% url 'videos-home' %}">&gt;&lt; DEJAVIEW</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link live" href="{% url 'videos-home' %}">Home</a>
+            <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            <form method="POST" action="{% url 'video-search' %}">
+              {% csrf_token %}
+            <div class="form-inline my-lg-0 input-group search-input pl-sm-0">
+              <input type="search" class="form-control " placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" id="search-bar" name="q"/>
+              <button class="btn btn-outline-success input-group-text border-0" id="search-button" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-item nav-link" href="{% url 'video-upload' %}">Upload</a>
+
+            <div class="inline pl-sm-0 dropdown">
+
+              <a class="nav-item nav-link d-flex flex-row pl-3 my-0 pb-0  pl-8 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" >{{ user.username }}
+                <img height="30px" width="30px" src=" {{ user.profile.image.url }}" class="rounded mx-2" />
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="dropdown-item" href="#">My Videos</a>
+                <a class="dropdown-item" href="{% url 'post-create' %}">Blog</a>
+              </div>
+            </div>
+
+            {% else %}
+
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {% block carousel %}{% endblock %}
+    <div class="row">
+
+  </header>
+
+  <main role="main" class="container">
+    <div class="col-md-12">
+
+      {% if messages %} {%for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% block content %}{% endblock %}
+    </div>
+  </main>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="{% static 'blog/scripts/owl/more.js' %}"></script>
+  <script src="{% static 'blog/scripts/owl/slides.js' %}"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
+
+   <!-- videoJS CSS -->
+   <script defer src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+
+   <!-- load animations -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get all elements with data-animation attribute
+      var elements = document.querySelectorAll('[data-animation]');
+
+      // Iterate through each element
+      elements.forEach(function (element) {
+        // Get animation and delay values from data attributes
+        var animation = element.dataset.animation;
+        var delay = element.dataset.delay;
+
+        // Add classes for the specified animation and delay
+        element.classList.add('animated', animation);
+        element.style.animationDelay = delay;
+      });
+    });
+  </script>
+      <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
+  {% block footer %}{% endblock %}
+</body>
+
+</html>

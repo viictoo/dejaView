@@ -1,0 +1,41 @@
+
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="media">
+      <img class="rounded-circle account-img" src="/media/logo.png">
+      <div class="media-body">
+        {% if page_obj.is_paginated %}
+        <h2 class="mb-3 account-heading">Posts By {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
+        {% else %}
+        <h2 class="mb-3 account-heading">Posts By {{ view.kwargs.username }}</h2>
+        {% endif%}
+
+        <p class="text-secondary">some text</p>
+      </div>
+    </div>
+  </div>
+<div class="row">
+{% for video in videos %}
+<div class="col-sm-4">
+    <article class="media content-section">
+      <div class="media-body">
+        <h3><a class="article-title" href="{% url 'post-detail' video.id %}">{{ video.title }}</a></h3>
+        <p class="article-content cards">{{ video.content }}</p>
+        <div class="article-metadata">
+            <img class="rounded-circle article-img" src="{{ video.author.profile.image.url }}">
+              <a class="mr-2" href="{% url 'user-posts' video.author.username %}">{{ video.author }}</a>
+              <small class="text-muted">{{ video.date_posted|date:"F, d, Y" }}</small>
+          </div>
+        </div>
+    </article>
+</div>
+    {% endfor %}
+</div>
+{% if page_obj.is_paginated %}
+  {% if page_obj.has_previous %}
+  <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+  <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+  {% endif%}
+{% endif%}
+{% endblock content %}
