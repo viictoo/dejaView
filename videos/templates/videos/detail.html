@@ -1,0 +1,228 @@
+{% extends "blog/base.html" %} {% load humanize %} {% block content %}
+
+<div class="container mx-auto d-block mt-4 ">
+
+    <div class="card mx-auto d-block">
+
+        <!-- Thumbnail -->
+        <div class=" card thumbnail">
+            <video src="{{ object.preview_clip.url }}" alt="Video Preview"
+                class="responsive rounded mx-auto d-flex thumbnail" autoplay muted loop width="100%" height="auto">
+                Your browser does not support the video tag.
+            </video>
+            <div class="blog-btn">
+                <a href="{% url 'video-playback' object.id %}"><i class="zmdi zmdi-play"></i></a>
+            </div>
+        </div>
+        <div class="row no-gutter align-items-center">
+                <div class="card-header col-8">
+                    <h2 class="pl-4">{{ object.title }}</h2>
+                    {% if object.user == user %}
+                    <div class="pl-4">
+                        <a class="btn btn-secondary btn-sm my-1" href="{% url 'video-update' object.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-100" href="{% url 'video-delete' object.id %}">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-4 d-flex justify-content-end pl-4">
+                    <!-- Purchase Button -->
+                    <a href="#" class="btn btn-primary mr-4" data-toggle="modal" data-target="#purchaseModal"
+                        data-video-id="{{ object.id }}"><i class="zmdi zmdi-tv-play"></i> Buy Now</a>
+                </div>
+        </div>
+            <div class="card-body d-flex justify-content-between">
+                <h4>{{ object.user }}</h4>
+                <!-- Video Details -->
+                <p class="text-muted"><i class="zmdi zmdi-alarm-check"></i> {{ object.upload_date|date:"F, d, Y" }}</p>
+                <h5 class="text-muted">Kshs {{ object.price }}</h5>
+            </div>
+            <div class="card-text">
+            <p class=" p-3">{{ object.description }}</p>
+           </div>
+
+
+
+    </div>
+</div>
+
+
+<!-- Purchase Modal -->
+<div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalLabel"
+    aria-hidden="true" data-video-id="{{ object.id }}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Pay with</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="paymentForm">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <!-- Payment Method Section -->
+                        <div class="col-md-6">
+                            <h6>Payment Method</h6>
+                            <div class="form-group">
+                                <select name="payment_method" class="form-control">
+                                    <option>MPesa</option>
+                                    <option>VISA / Mastercard</option>
+                                    <option>PayPal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Amount</h6>
+                            <div class="form-group">
+                                <select name="amount" class="form-control">
+                                    <option value="{{ object.price }}">KShs{{ object.price }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Details Section -->
+                    <h6>Contact Details</h6>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">🇰🇪</span>
+                            <input type="text" name="phone_number" class="form-control"
+                                value="{{ object.user.profile.phone_number }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ object.user.email }}">
+                    </div>
+
+                    <!-- Terms and Conditions Section -->
+                    <h6>Terms and Conditions</h6>
+                    <div class="form-check">
+                        <input type="checkbox" name="agree_to_terms" class="form-check-input">
+                        <label class="form-check-label" for="agreeCheckbox">I agree to the Terms of Service and
+                            Privacy Policy.</label>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="initiatePayment()">Complete
+                            Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p><i class="zmdi zmdi-rotate-right zmdi-hc-spin"></i> Loading...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function checkTransactionStatus(checkoutRequestId, maxChecks) {
+        var checks = 0;
+
+        var checkInterval = setInterval(function () {
+            // Perform an asynchronous request to check the transaction status
+            fetch(`{% url 'check_transaction_status' %}?checkout_request_id=${checkoutRequestId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Error checking transaction status:', data.error);
+                    } else {
+                        console.log('Transaction status:', data.transaction_status);
+
+                        if (data.transaction_status === 0) {
+                            console.log(data.transaction_status)
+                            clearInterval(checkInterval); // Stop further checks
+                            console.log('Transaction complete, redirecting...');
+                            window.location.href = "{% url 'video-playback' object.id %}";
+                        } else if (checks >= maxChecks) {
+                            // Maximum checks reached, stop checking
+                            clearInterval(checkInterval);
+                            console.log("Maximum checks reached, redirecting without completion");
+                            alert(`E15. Payment failed. Please try again. ${data.errorMessage}`);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error checking transaction status:', error));
+
+            checks++;
+        }, 3000); // Check every 3 seconds, adjust as needed
+    }
+    function initiatePayment() {
+        if (validateForm()) {
+            $('#loadingModal').modal('show');
+            var videoId = document.querySelector('#purchaseModal').getAttribute('data-video-id');
+            var formData = new FormData(document.getElementById('paymentForm'));
+            formData.append('video', videoId);
+            console.log(formData);
+
+            fetch("{% url 'checkout' %}", {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    handlePaymentResponse(data);
+                    if (data.ResponseCode === '0') {
+                        checkTransactionStatus(data.CheckoutRequestID, 10); // Check for completion 10 times (30 seconds)
+                    }
+                })
+                .catch(error => handlePaymentError(error));
+        }
+    }
+
+    function validateForm() {
+        // Simple form validation
+        var paymentMethod = document.forms["paymentForm"]["payment_method"].value;
+        var amount = document.forms["paymentForm"]["amount"].value;
+        var phoneNumber = document.forms["paymentForm"]["phone_number"].value;
+        var email = document.forms["paymentForm"]["email"].value;
+        var agreeCheckbox = document.forms["paymentForm"]["agree_to_terms"].checked;
+
+        if (paymentMethod === "" || amount === "" || phoneNumber === "" || email === "" || !isValidEmail(email) || !agreeCheckbox) {
+            alert("Please fill in all fields and ensure a valid email address.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function isValidEmail(email) {
+        // Basic email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function handlePaymentResponse(data) {
+        // Handle the payment response from Django
+        $('#loadingModal').modal('hide');
+        console.log('Response Data:', data);
+        console.log(data.ResponseCode)
+        if (data.ResponseCode === '0') {
+            alert(`Info: ${data.CustomerMessage}`);
+            // Payment succeeded, redirect the user to the success page
+            // window.location.href = "{% url 'video-playback' object.id %}";
+        } else {
+            // Payment failed, show an error message or take appropriate action
+            alert(`Payment Failed! Please try again. ${data.errorMessage}`);
+        }
+    }
+
+    function handlePaymentError(error) {
+        // Handle errors or exceptions from the Django backend
+        $('#loadingModal').modal('hide');
+        alert('An error occurred while processing the payment. Please try again.');
+        console.error('Error:', error);
+    }
+</script>
+{% endblock content %}

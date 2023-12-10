@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="border-bottom">Upload Video</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container centered">
+    <div class="form-row gx-5">
+      <div class="form-group col-md-6 mb-0 px-4 input-sm">
+        {{ form.title|as_crispy_field }}
+        {{ form.description|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0 px-4">
+        {{ form.video_file|as_crispy_field }}
+        {{ form.price|as_crispy_field }}
+        <div class="d-flex">
+          <button class="btn btn-primary" type="submit">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

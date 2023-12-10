@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class='row'>
+<div class='content-section col-md-6 border-right-0' id="card-greeting">
+    <div class="centered">
+    <p class="text-start" > In loss things — both animate and inanimate — take on an added intensity and meaning
+    </p>
+
+</div>
+</div>
+<div class='content-section col-md-6 border-left-0' id="card-input" >
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group ">
+            <legend class="border-bottom mb-4">Delete Post</legend>
+            <p>Are You sure you want to delete {{ object.title}}?</p>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-danger" type="submit">Delete This Post</button>
+            <a class="btn btn-primary"  href="{% url 'video-detail' object.id %}">Cancel</a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,121 @@
+{% extends "blog/base.html" %} {% load humanize %}
+
+{% block carousel %}
+<section class="welcome-area">
+  <div class="welcome-slides owl-carousel">
+
+    <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url(/static/blog/icons/banner.jpg);">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+
+          <div class="col-12">
+            <div class="welcome-text text-right">
+              <h2 data-animation="fadeInUp" data-delay="300ms">Welcome to <br>DejaView</h2>
+              <h6 data-animation="fadeInUp" data-delay="700ms">Browse our Wide Catalogue of Videos</h6>
+              <div class="hero-btn-group" data-animation="fadeInUp" data-delay="800ms">
+                <a href="#home" class="btn more-btn">Discover <i class="zmdi zmdi-long-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url(/media/thumbnails/thumbnail_5c46ad41-8c23-4083-ab6b-9836483b1cd3.jpg);">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+
+          <div class="col-12">
+            <div class="welcome-text-two text-center">
+              <h5 data-animation="fadeInUp" data-delay="100ms">
+                this is not a </h5>
+              <h2 data-animation="fadeInUp" data-delay="300ms">video</h2>
+
+              <div class="event-meta" data-animation="fadeInUp" data-delay="500ms">
+                <a class="event-date" href="#"><i class="zmdi zmdi-account"></i> November 25, 2023</a>
+                <a class="event-author" href="#"><i class="zmdi zmdi-alarm-check"></i> provic</a>
+              </div>
+              <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
+                <a href="#home" class="btn more-btn m-2" >View more <i class="zmdi zmdi-long-arrow-right"></i></a>
+                <a href="#" class="btn more-btn m-2">Watch Now <i class="zmdi zmdi-long-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url(/media/thumbnails/thumbnail_e961e9c0-055a-4bd3-b251-20b882d7dfcc.jpg);">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+
+          <div class="col-12">
+            <div class="welcome-text-two text-center">
+              <h5 data-animation="fadeInUp" data-delay="100ms"></h5>
+              <h2 data-animation="fadeInUp" data-delay="300ms">video</h2>
+
+              <div class="event-meta" data-animation="fadeInUp" data-delay="500ms">
+                <a class="event-date" href="#"><i class="zmdi zmdi-account"></i> November 26, 2023</a>
+                <a class="event-author" href="#"><i class="zmdi zmdi-alarm-check"></i> query</a>
+              </div>
+              <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
+                <a href="#home" class="btn more-btn m-2">View more <i class="zmdi zmdi-long-arrow-right"></i></a>
+                <a href="#" class="btn more-btn m-2">Watch Now <i class="zmdi zmdi-long-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}
+{% block content %}
+
+<div class="container mt-30 p-100" id="home">
+  <h2 class="videos-title">
+  Latest Videos
+</h2>
+</div>
+<div class="row">
+  {% for video in videos %}
+  <div class="col-md-4 mb-4">
+    <article class="media content-section video-cards">
+      <div class="media-body">
+        <div class="card">
+          <div class="thumb">
+          <a href="{%  url 'video-detail' video.id %}">
+            <img class="card-img-top thumbnail" src="{{ video.thumbnail.url }}" alt="Thumbnail">
+          </a>
+        </div>
+        </div>
+
+        <div class="my_card">
+
+          <div class="article-metadata">
+            <div class="row justify-content-center g-0">
+              <a href="{%  url 'user-videos' video.user %}">
+              <img class="rounded-circle article-img" src="{{ video.user.profile.image.url }}">
+            </a>
+              <div class="col article-items-center ">
+
+                <h5><a class="article-title" href="{%  url 'video-detail' video.id %}">{{ video.title }}</a></h5>
+                <a class="mr-2 text2" href="{% url 'user-videos' video.user %}">{{ video.user}}</a>
+                <small class="text-muted">{{ video.upload_date|naturaltime }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+    </article>
+  </div>
+  {% endfor %}
+</div>
+{% if is_paginated %}
+{% if page_obj.has_previous %}
+<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif%}
+{% endif%}
+
+{% endblock content %}
+{% block footer %}{% include 'blog/footer.html' %}{% endblock %}

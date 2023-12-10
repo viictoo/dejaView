@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="media">
+    <img class="rounded-circle account-img" src="/media/logo.png">
+    <div class="media-body">
+      <h2 class="display-4">Hero Section</h2>
+      <p class="lead">some text</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  {% for video in videos %}
+  <div class="card">
+    <img class="card-img-top" src="{{ video.thumbnail.url }}" alt="{{ video.title }} thumbnail">
+    <div class="card-body">
+      <h4><a class="card-title my_card" href="{% url 'video-detail' video.id %}">{{ video.title }}</a></h4>
+      <p class="card-text cards">{{ video.description }}</p>
+      <div class="article-metadata">
+        <img class="rounded-circle article-img" src="{{ video.user.profile.image.url }}">
+        <a class="mr-2" href="{% url 'user-videos' video.user %}">{{ video.user }}</a>
+        <small class="text-muted">{{ video.upload_date|date:"F, d, Y" }}</small>
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+{% if is_paginated %}
+{% if page_obj.has_previous %}
+<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif%}
+{% endif%}
+
+{% endblock content %}
+{% block footer %}{% include 'blog/footer.html' %}{% endblock %}

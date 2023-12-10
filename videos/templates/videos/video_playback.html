@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="mx-auto centered">
+  <video id="c_video" class="video-js vjs-default-skin mx-auto thumbnail" controls fluid preload="auto" width="640" height="480"
+    poster="{{ video.thumbnail.url }}" data-setup="{}">
+    <source src="{{ video.hls_url }}" type="application/x-mpegURL">
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+</div>
+</div>
+<script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+{% endblock %}
