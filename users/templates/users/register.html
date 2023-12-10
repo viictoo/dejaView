@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class='row'>
+    <div class='content-section col-md-6 border-right-0' id="card-greeting">
+        <div class="centered">
+
+            <div class="col-12">
+                <div class="welcome-text-two text-center">
+                  <h2 data-animation="fadeInUp" data-delay="200ms">Jambo! </h5>
+                  <h5 data-animation="fadeInUp" data-delay="500ms">Create Your Free Account</h2>
+                  </div>
+                </div>
+        </div>
+
+    </div>
+    <div class='content-section col-md-6 border-left-0' id='card-input'>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group ">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form.username|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
+                {{ form.phone_number|as_crispy_field }}
+                {{ form.password1|as_crispy_field }}
+                {{ form.password2|as_crispy_field }}
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn btn-outline-info more-btn" type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text muted">
+                Already have an account? <a class="ml-2" href="{% url 'login'%}">Sign In</a>
+            </small>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block footer %}{% include 'blog/footer.html' %}{% endblock %}

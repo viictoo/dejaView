@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container md-12">
+<div class='row'>
+        <div class='content-section col-md-6 border-right-0' id="card-greeting">
+            <div class="centered">
+
+            <div class="welcome-text-two text-center">
+                <h2>Welcome Back <br></h5>
+                <h5 data-animation="fadeInUp" data-delay="700ms">Log in to access exclusive content.</h2>
+            </div>
+            </div>
+        </div>
+        <div class='content-section col-md-6 border-left-0' id='card-input'>
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group ">
+                    <legend class="border-bottom mb-4">Login</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info more-btn" type="submit">Submit</button>
+                </div>
+                <small><a href="{% url 'password_reset' %}">I forgot my Password</a></small>
+                <div class="border-top pt-3">
+                    <small class="text muted">
+                        New Here? <a class="ml-2" href="{% url 'register' %}">Sign Up Now!</a> </small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

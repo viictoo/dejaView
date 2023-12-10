@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    <h2 class="text-start" >
+        You have been logged out
+        <h4>
+        Thanks for spending some quality time with the web site today.
+        </h4>
+    </h2>
+
+            <div class="border-top pt-3">
+                <p class="text">
+            <a class="ml-2" href="{% url 'login'%}">Log Back In</a>
+                </p>
+            </div>
+
+{% endblock content %}
+{% block footer %}{% include 'blog/footer.html' %}{% endblock %}
