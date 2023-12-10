@@ -1,0 +1,102 @@
+{% extends "blog/base.html" %}
+{% load humanize %}
+{% block content %}
+
+<h2 class="videos-title mb-2">
+    Search Results
+</h2>
+<h2 class="mb-4">
+    You searched for "{{ query }}"
+</h2>
+<div class="row">
+    {% if videos %}
+    <div class="col-12">
+        <p>Found {{ result_count }} video matching your search.</p>
+    </div>
+    {% for video in videos %}
+    <div class=" col-sm-6 col-md-4">
+        <div class="card border-0 rounded-10 shadow" style="width: 18rem;" id="filter">
+            <a href="{%  url 'video-detail' video.id %}">
+                <img src="{{ video.thumbnail.url }}" class="card-img-top rounded-10 thumbnail"
+                    alt="{{ video.title }} thumbnail">
+                <div class="card-body mt-3 mb-3 py-0">
+                    <div class="row">
+                        <div class="col-10">
+                            <h4 class="card-title">{{ video.title }}</h4>
+            </a>
+            <p class="card-text">
+                {{ video.upload_date|naturaltime }}
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-center text-center gx-5">
+    <div class="col-4">
+        <h5>Kshs {{ video.price }}</h5>
+    </div>
+    <div class="col-8">
+        <a href="{%  url 'video-detail' video.id %}" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BUY
+            NOW</a>
+    </div>
+</div>
+{% endfor %}
+{% if is_paginated %}
+{% if page_obj.has_previous %}
+<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif%}
+{% endif%}
+
+
+{% elif users %}
+{% for user in users %}
+<div class="card p-3">
+    <div class="row justify-content-center g-0">
+        <div class="col ">
+            <a href="{%  url 'user-videos' user %}">
+                <img class="rounded-circle article-img" src="{{ user.profile.image.url }}">
+            </a>
+        </div>
+        <div class="col centered pl-0">
+            <h3>{{ user.username}} </h3>
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+
+{% else %}
+
+<div class=" col-12 mb-4">
+    NO RESULTS FOUND <br>
+    Tip: Use specific keywords for more accurate results
+</div>
+{% if featured_video %}
+<div>
+    <h2 class="mb-4">Featured Video of the Day</h2>
+    <div class=" col-sm-6 col-md-4">
+        <div class="card border-0 rounded-10 shadow mb-2" style="width: 18rem;" id="filter">
+            <a href="{%  url 'video-detail' featured_video.id %}">
+                <img src="{{ featured_video.thumbnail.url }}" class="card-img-top rounded-10 thumbnail"
+                    alt="{{ featured_video.title }} thumbnail">
+                <div class="card-body mt-3 mb-3 py-0">
+                    <div class="row">
+                        <div class="col-10">
+                            <h4 class="card-title">{{ featured_video.title }}</h4>
+            </a>
+            <p class="card-text">
+                {{ featured_video.upload_date|naturaltime }}
+                {{ featured_video.user.username|naturaltime }}
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endif%}
+
+
+{% endblock %}
+
+{% block footer %}{% include 'blog/footer.html' %}{% endblock %}

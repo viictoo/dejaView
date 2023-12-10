@@ -1,0 +1,226 @@
+{% extends "blog/base.html" %}
+{% load humanize %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid ">
+  <div class="media">
+    <img class="rounded-circle account-img" src="/media/logo.png">
+    <div class="media-body">
+      {% if page_obj.is_paginated %}
+      <h2 class="mb-3 account-heading">Hi. I am {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
+      {% else %}
+      <a class="mb-3 account-heading"> Hi. I am {{ view.kwargs.username }}</a>
+      {% endif%}
+      <h2 class="display-4"></h2>
+      <p class="lead">Welcome to my Page</p>
+    </div>
+  </div>
+</div>
+
+<div class="user-header">
+  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="Videos"
+        aria-selected="true">Videos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#products" role="tab" aria-controls="Products"
+        aria-selected="false">Products</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="Events"
+        aria-selected="false">Events</a>
+    </li>
+  </ul>
+</div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <h2 class="videos-title">
+      Latest Videos
+    </h2>
+
+    <div class="row">
+      {% for video in videos %}
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 rounded-10 shadow" style="width: 18rem;" id="filter">
+          <a href="{%  url 'video-detail' video.id %}">
+          <img src="{{ video.thumbnail.url }}" class="card-img-top rounded-10 thumbnail"
+            alt="{{ video.title }} thumbnail">
+          <div class="card-body mt-3 mb-3 py-0">
+            <div class="row">
+              <div class="col-10">
+                <h4 class="card-title">{{ video.title }}</h4>
+              </a>
+                <p class="card-text">
+                  {{ video.upload_date|naturaltime }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-center text-center gx-5">
+            <div class="col-4">
+              <h5>Kshs {{ video.price }}</h5>
+            </div>
+            <div class="col-8">
+              <a href="{%  url 'video-detail' video.id %}" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BUY
+                NOW</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+      {% if is_paginated %}
+      {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif%}
+      {% endif%}
+
+
+    </div>
+  </div>
+
+
+
+  <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="row">
+      <div class=" col">
+        <div class="card border-0 rounded-10 shadow mb-2" style="width: 18rem;" id="filter">
+          <img src="/media/mugs.png" class="card-img-top rounded-10 thumbnail " alt="TSHIRT thumbnail">
+          <div class="card-body mt-3 mb-3 py-0">
+            <div class="row">
+              <div class="col-10">
+                <h4 class="card-title">Mugs</h4>
+
+                <p class="card-text">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center text-center gx-5">
+            <div class="col-4">
+              <h5>Kshs 250</h5>
+            </div>
+            <div class="col-8">
+              <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BUY NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=" col">
+        <div class="card border-0 rounded-10 shadow mb-3" style="width: 18rem;" id="filter">
+          <img src="/media/tshirt.png" class="card-img-top rounded-10 thumbnail" alt="TSHIRT thumbnail">
+          <div class="card-body mt-3 mb-3 py-0">
+            <div class="row">
+              <div class="col-10">
+                <h4 class="card-title">Tshirts</h4>
+
+                <p class="card-text">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center text-center gx-5">
+            <div class="col-4">
+              <h5>Kshs 450</h5>
+            </div>
+            <div class="col-8">
+              <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BUY NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=" col">
+        <div class="card border-0 rounded-10 shadow mb-3" style="width: 18rem;" id="filter">
+          <img src="/media/cap.png" class="card-img-top rounded-10 thumbnail" alt="caps thumbnail">
+          <div class="card-body mt-3 mb-3 py-0">
+            <div class="row">
+              <div class="col-10">
+                <h4 class="card-title">Caps</h4>
+
+                <p class="card-text">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center text-center gx-5">
+            <div class="col-4">
+              <h5>Kshs 150</h5>
+            </div>
+            <div class="col-8">
+              <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BUY NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+
+      <div class="countdown-timer mb-100 videos-title" data-wow-delay="00ms">
+      <div id="clock"></div>
+      </div>
+
+    <div class="row">
+      <div class=" col-sm-6 col-md-4">
+        <div class="card border-0 rounded-10 shadow mb-3" style="width: 18rem;" id="filter">
+          <img src="/media/eventPoster.png" class="card-img-top rounded-10 " alt="POSTER">
+          <div class="card-body mt-3 mb-3 py-0">
+            <div class="row">
+              <div class="col-10">
+                <h4 class="card-title">Live Show </h4>
+                <p class="card-text">
+                  DATE: 23rd December
+                </p>
+                <p class="card-text">
+                  VENUE: KWA GROUND
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center text-center gx-5">
+            <div class="col-4">
+              <h5>Kshs 500</h5>
+            </div>
+            <div class="col-8">
+              <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BUY TICKETS</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("Dec 23, 2023 19:00:25").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("clock").innerHTML = days + " Days " + hours + " Hrs "
+    + minutes + " Mins " + seconds + " Secs";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("clock").innerHTML = "ENDED";
+    }
+  }, 1000);
+  </script>
+{% endblock content %}
