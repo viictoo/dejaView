@@ -1,22 +1,19 @@
-from django.shortcuts import render
-
 import logging
-
-from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework.decorators import (authentication_classes,
+                                       permission_classes)
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from rest_framework.renderers import JSONRenderer
 import json
 from django.http import JsonResponse
 from .serializers import MpesaCheckoutSerializer
 from .util import MpesaGateWay
-from.callback_handler import callback_handler
 from .models import Transaction
 from .serializers import TransactionSerializer
 
 gateway = MpesaGateWay()
+
 
 @authentication_classes([])
 @permission_classes((AllowAny,))
@@ -58,7 +55,8 @@ class MpesaCallBack(APIView):
         """Handles GET requests for MPESA callback.
 
         Returns:
-            Response: HTTP response indicating the status of the callback.
+            Response: HTTP response indicating the
+            status of the callback.
         """
         return Response({"status": "OK"}, status=200)
 
@@ -66,7 +64,8 @@ class MpesaCallBack(APIView):
         """Handles POST requests for MPESA callback.
 
         Returns:
-            JsonResponse: JSON response indicating the result of the MPESA callback processing.
+            JsonResponse: JSON response indicating
+            the result of the MPESA callback processing.
         """
         logging.info("{}".format("Callback from MPESA"))
         data = request.body
@@ -84,13 +83,19 @@ class CheckTransactionStatus(APIView):
         Returns:
             Response: JSON response indicating the transaction status.
         """
-        checkout_request_id = self.request.query_params.get('checkout_request_id', None)
+        checkout_request_id = self.request.query_params.get(
+            'checkout_request_id', None)
 
         if not checkout_request_id:
-            return Response({"error": "checkout_request_id parameter is required."}, status=400)
+            return Response(
+                {
+                    "error": "checkout_request_id parameter is required."
+                 },
+                 status=400)
 
         try:
-            transaction = Transaction.objects.get(checkout_request_id=checkout_request_id)
+            transaction = Transaction.objects.get(
+                checkout_request_id=checkout_request_id)
         except Transaction.DoesNotExist:
             return Response({"error": "Transaction not found."}, status=404)
 

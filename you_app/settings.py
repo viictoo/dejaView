@@ -29,13 +29,27 @@ SECRET_KEY = 'django-insecure-7f0frffeoe40auiei6d)m0wec(n&04rc04xw6w8yqvbh&em9ok
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['67ae-105-160-38-222.ngrok-free.app', 'localhost']
+# MPESA CALLBACK IPs
+ALLOWED_HOSTS = [
+                 '196.201.214.200',
+                '196.201.214.206',
+                '196.201.213.114',
+                '196.201.214.207',
+                '196.201.214.208',
+                '196. 201.213.44',
+                '196.201.212.127',
+                '196.201.212.138',
+                '196.201.212.129',
+                '196.201.212.136',
+                '196.201.212.74',
+                '196.201.212.69',
+                'localhost',
+                    ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django_tus',
     'ckeditor',
     'mpesa.apps.MpesaConfig',
     'videos.apps.VideosConfig',
@@ -44,7 +58,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     "django.contrib.humanize",
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +65,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_fastdev',
-
     "phonenumber_field",
     "rest_framework",
     'storages',
@@ -172,10 +184,11 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = False
-AWS_S3_REGION_NAME = 'eu-north-1' # Your region name
+AWS_S3_REGION_NAME = 'eu-north-1' # region name
 AWS_DEFAULT_ACL = None
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 
+# AWS storage
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 

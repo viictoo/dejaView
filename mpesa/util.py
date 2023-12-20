@@ -98,7 +98,8 @@ class MpesaGateWay:
 
 
     def generate_password(self):
-        """Generates mpesa api password using the provided shortcode and passkey"""
+        """Generates mpesa api password
+        using the provided shortcode and passkey"""
         self.timestamp = self.now.strftime("%Y%m%d%H%M%S")
         password_str = env("shortcode") + env("pass_key") + self.timestamp
         password_bytes = password_str.encode("ascii")
