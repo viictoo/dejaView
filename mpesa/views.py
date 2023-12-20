@@ -37,7 +37,10 @@ class MpesaCheckout(APIView):
         """
         serializer = self.serializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            payload = {"data":serializer.validated_data, "request":request}
+            payload = {
+                "data":serializer.validated_data,
+                "request":request
+                }
             res = gateway.stk_push_request(payload)
             return JsonResponse(res, status=200)
 

@@ -5,7 +5,8 @@ class MpesaConfig(AppConfig):
     """Configuration for the 'mpesa' app.
 
     Args:
-        AppConfig (type): Base class for application configuration.
+        AppConfig (type): Base class for
+        application configuration.
 
     Attributes:
         name (str): The name of the app.
