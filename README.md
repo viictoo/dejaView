@@ -5,6 +5,8 @@
 
 DejaView is a Django-based platform that allows clients to upload recordings of live events/shows, which users can then pay to watch. Clients have a dedicated page with videos, merchandise, and announcements of upcoming live events. The home page features recently uploaded videos, popular videos, from the clients.
 
+![data flow on video upload](https://lh7-us.googleusercontent.com/62CWQK9WBPAH5T0nBcFDRr8_SxvG9GJSfw4hfEzuIp-kKM5_WgEQOMxThZwWU-qx0haynE3WBUC-zmmdNO4SbI78OZBWFsKChJqtscN_HOYzV73ZEvOBj14KW0dGuGPIBRD_BByyAKATc5hrCzw4v_zbjQ=s2048)
+
 ## Installation
 
 To set up DejaView on your local machine, follow these steps:
