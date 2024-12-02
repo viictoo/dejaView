@@ -3,21 +3,21 @@
 
 ## Introduction
 
-DejaView is a video streaming platform that empowers content creators to upload and monetize their media assets. Clients can set prices for videos, sell merchandise, and engage with their audience through announcements and events. The app also features a blog for entertainment news and reviews, while offering secure streaming with HLS and encrypted video chunks for a seamless viewing experience. Built with Django and Bootstrap, the platform combines ease of use with robust functionality for both creators and users.
+DejaView is a video streaming platform that empowers content creators to upload and monetize their media assets. Clients can set prices for videos, sell merchandise, and engage with their audience through announcements and events. The app also features a blog for entertainment news and reviews, while offering adaptive, secure streaming with HLS and encrypted media for a seamless viewing experience. Built with Django and Bootstrap, the platform combines ease of use with robust functionality for both creators and users.
 
 
 ## App Screenshots
 
 <div style="overflow-x: auto; white-space: nowrap; padding: 10px 0;">
-   <img src="![assets/webp/welcome.webp](./assets/webp/welcome.webp)" alt="Welcome Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/blog-detail-view.webp](./assets/webp/blog-detail-view.webp)" alt="Blog Detail View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/blog-list-view.webp](./assets/webp/blog-list-view.webp)" alt="Blog List View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/create-new-user.webp](./assets/webp/create-new-user.webp)" alt="Create New User Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/detail-view.webp](./assets/webp/detail-view.webp)" alt="Detail View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/list-view.webp](./assets/webp/list-view.webp)" alt="List View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/pay-view.webp](./assets/webp/pay-view.webp)" alt="Pay View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/search.webp](./assets/webp/search.webp)" alt="Search Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
-   <img src="![assets/webp/user-list-view.webp](./assets/webp/user-list-view.webp)" alt="User List View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/welcome.webp" alt="Welcome Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/list-view.webp" alt="List View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/detail-view.webp" alt="Detail View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/create-new-user.webp" alt="Create New User Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/search.webp" alt="Search Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/pay-view.webp" alt="Pay View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/user-list-view.webp" alt="User List View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/blog-detail-view.webp" alt="Blog Detail View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
+   <img src="https://github.com/viictoo/dejaView/blob/main/assets/webp/blog-list-view.webp" alt="Blog List View Screenshot" style="width: 300px; margin-right: 10px; display: inline-block;">
 </div>
 
 ## Features
